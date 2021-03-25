@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { general_articles } from "../API";
 import Footer from "../component/Footer";
+import Loading from "../component/Loading";
 
 function General() {
   const [data, setData] = useState();
+  const [err, setErr] = useState();
 
   const getDefaultAPI = async () => {
+    // eslint-disable-next-line no-unused-vars
     const result = await general_articles()
-      .then(res => res)
-      .catch(err => err);
-    setData(result);
+      .then(res => setData(res))
+      .catch(err => setErr(err));
   };
 
   useEffect(() => {
     getDefaultAPI();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -23,15 +27,53 @@ function General() {
           if (data === undefined) {
             return (
               <>
-                <div className="container">
-                  <div className="loading d-flex justify-content-center my-5">
-                    <div
-                      className="spinner-grow text-primary mt-5"
-                      style={{ width: "4rem", height: "4rem" }}
-                      role="status"
-                    ></div>
-                  </div>
+                <div className="load">
+                  <Loading />
                 </div>
+                ;
+                {(function () {
+                  if (err) {
+                    return (
+                      <>
+                        <div className="card m-auto border-danger error mx-3">
+                          <h5 className="card-header text-center text-white bg-danger">
+                            Sorry, Error {err.response.status + " "}
+                          </h5>
+                          <div className="card-body">
+                            <h5 className="card-title mb-4">We will fixed</h5>
+                            <p className="card-text fs-6">
+                              {(function () {
+                                if (err.response.status === 400) {
+                                  return <>Bad Request.</>;
+                                } else if (err.response.status === 401) {
+                                  return (
+                                    <>
+                                      Unauthorized! API key was missing from the
+                                      request, or wasn't correct.
+                                    </>
+                                  );
+                                } else if (err.response.status === 429) {
+                                  return (
+                                    <>
+                                      Too many Requests within a window of time
+                                      and have been rate limited.
+                                    </>
+                                  );
+                                } else {
+                                  return <>Server Error</>;
+                                }
+                              })()}
+                            </p>
+                            <NavLink to="/" className="btn btn-danger btn-sm">
+                              {" "}
+                              Back Home
+                            </NavLink>
+                          </div>
+                        </div>
+                      </>
+                    );
+                  }
+                })()}
               </>
             );
           } else {

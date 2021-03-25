@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { science_articles } from "../API";
+import { technology_articles } from "../API";
 import Footer from "../component/Footer";
 import Loading from "../component/Loading";
 
-function Science() {
+function Technology() {
   const [data, setData] = useState();
   const [err, setErr] = useState();
 
   const getDefaultAPI = async () => {
     // eslint-disable-next-line no-unused-vars
-    const result = await science_articles()
+    const result = await technology_articles()
       .then(res => setData(res))
       .catch(err => setErr(err));
   };
@@ -35,13 +35,13 @@ function Science() {
                   if (err) {
                     return (
                       <>
-                        <div className="card m-auto border-danger error mx-3">
-                          <h5 className="card-header text-center text-white bg-danger">
+                        <div class="card m-auto border-danger error mx-3">
+                          <h5 class="card-header text-center text-white bg-danger">
                             Sorry, Error {err.response.status + " "}
                           </h5>
-                          <div className="card-body">
-                            <h5 className="card-title mb-4">We will fixed</h5>
-                            <p className="card-text fs-6">
+                          <div class="card-body">
+                            <h5 class="card-title mb-4">We will fixed</h5>
+                            <p class="card-text fs-6">
                               {(function () {
                                 if (err.response.status === 400) {
                                   return <>Bad Request.</>;
@@ -152,4 +152,4 @@ function Science() {
   );
 }
 
-export default Science;
+export default Technology;

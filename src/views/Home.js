@@ -1,113 +1,106 @@
-import { useEffect, useState } from "react";
-import { technology_articles } from "../API";
-import Footer from "../component/Footer";
+import Tech from "../img/technologysvg.svg";
+import General from "../img/general.svg";
+import Business from "../img/business.svg";
+import Sport from "../img/sport.svg";
+import Health from "../img/health.svg";
+import Science from "../img/science.svg";
+import Entertaiment from "../img/entertaiment.svg";
+import { NavLink } from "react-router-dom";
 
-function Home() {
-  const [data, setData] = useState();
-
-  const getDefaultAPI = async () => {
-    const result = await technology_articles()
-      .then(res => res)
-      .catch(err => err);
-    setData(result);
-  };
-
-  useEffect(() => {
-    getDefaultAPI();
-  }, []);
-
+const Home = () => {
   return (
     <>
-      <div className="App">
-        {(function () {
-          if (data === undefined) {
-            return (
-              <>
-                <div className="container">
-                  <div className="loading d-flex justify-content-center my-5">
-                    <div
-                      className="spinner-grow text-primary mt-5"
-                      style={{ width: "4rem", height: "4rem" }}
-                      role="status"
-                    ></div>
-                  </div>
-                </div>
-              </>
-            );
-          } else {
-            return (
-              <>
-                <div className="container">
-                  {data.map((article, i) => {
-                    const d = new Date(article.publishedAt);
-                    const y = d.getUTCFullYear();
-                    const m = () =>
-                      d.getUTCMonth() < 10
-                        ? `0${d.getUTCMonth()}`
-                        : d.getUTCMonth();
-
-                    const day = () =>
-                      d.getUTCDay() < 10 ? `0${d.getUTCDay()}` : d.getUTCDay();
-                    const publish = `${y}-${m()}-${day()}`;
-                    return (
-                      <div className="row" key={i.toString()}>
-                        <div className="col-md-5">
-                          <div className="card mx-2 shadow my-3 border-seondary">
-                            <div className="bungkus">
-                              <img
-                                src={article.urlToImage}
-                                className="card-img-top"
-                                alt="img article"
-                              />
-                              <div className="title-img">
-                                <h6>{article.title}</h6>
-                              </div>
-                            </div>
-
-                            <div className="card-body">
-                              Source: {article.source.name}
-                              <br />
-                              <br />
-                              <p className="card-text">{article.description}</p>
-                              <p>
-                                By ~
-                                <span className="fst-italic">
-                                  {article.author}
-                                </span>
-                              </p>
-                              <a
-                                href={article.url}
-                                className="float-end btn btn-outline-info me-auto"
-                              >
-                                More
-                              </a>
-                              {/* </div> */}
-                              <p>{publish}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ); // end-return
-                  })}
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                  <path
-                    fill="#0d6efd"
-                    fillOpacity="1"
-                    d="M0,32L60,69.3C120,107,240,181,360,224C480,267,600,277,720,240C840,203,960,117,1080,90.7C1200,64,1320,96,1380,112L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-                  ></path>
-                </svg>
-                <div className="footer">
-                  <Footer />
-                </div>
-              </>
-            );
-          }
-        })()}
+      {/* <div className="container"> */}
+      <div className="d-flex justify-content-around flex-wrap mt-5">
+        <NavLink to="/general">
+          <div className="card mb-3 mx-5 text-secondary border-secondary bg-white border-3 rounded mx-2">
+            <img src={General} className="m-auto mt-4" width="100" alt="..." />
+            <h5 className="card-title text-center mt-2">General</h5>
+            <div className="card-body">
+              <p className="card-text text-center">
+                The latest news that is hot and busy in the world. Don't you
+                miss something around you
+              </p>
+            </div>
+          </div>
+        </NavLink>
+        <NavLink to="/technology">
+          <div className="card mb-3 mx-5 text-primary border-primary bg-white border-3 rounded mx-2">
+            <img src={Tech} className="m-auto mt-4" width="100" alt="..." />
+            <h5 className="card-title text-center mt-2">Technology</h5>
+            <div className="card-body">
+              <p className="card-text text-center">
+                Latest technological developments in the world. Find
+                intelligence in technology
+              </p>
+            </div>
+          </div>
+        </NavLink>
+        <NavLink to="/business">
+          <div className="card mb-3 mx-5 text-warning border-warning bg-white border-3 rounded mx-2">
+            <img src={Business} className="m-auto mt-4" width="100" alt="..." />
+            <h5 className="card-title text-center mt-2">Business</h5>
+            <div className="card-body">
+              <p className="card-text text-center">
+                Business developments that are trending in the world
+              </p>
+            </div>
+          </div>
+        </NavLink>
+        <NavLink to="/science">
+          <div className="card mb-3 mx-5 science  bg-white border-3 rounded mx-2">
+            <img src={Science} className="m-auto mt-4" width="100" alt="..." />
+            <h5 className="card-title text-center mt-2">Science</h5>
+            <div className="card-body">
+              <p className="card-text text-center">
+                See the world of science and experiment in the world
+              </p>
+            </div>
+          </div>
+        </NavLink>
+        <NavLink to="/health">
+          <div className="card mb-3 mx-5 text-success border-success bg-white border-3 rounded mx-2">
+            <img src={Health} className="m-auto mt-4" width="100" alt="..." />
+            <h5 className="card-title text-center mt-2">Health</h5>
+            <div className="card-body">
+              <p className="card-text text-center">
+                Health is very important especially during this pandemic
+              </p>
+            </div>
+          </div>
+        </NavLink>
+        <NavLink to="/sport">
+          <div className="card mb-3 mx-5 text-danger border-danger bg-white border-3 rounded mx-2">
+            <img src={Sport} className="m-auto mt-4" width="100" alt="..." />
+            <h5 className="card-title text-center mt-2">Sport</h5>
+            <div className="card-body">
+              <p className="card-text text-center">
+                Sports news to fill your spare time. Exercise and live a healthy
+                life
+              </p>
+            </div>
+          </div>
+        </NavLink>
+        <NavLink to="/entertaiment">
+          <div className="card mb-3 mx-5 entertaiment bg-white border-3 rounded mx-2">
+            <img
+              src={Entertaiment}
+              className="m-auto mt-4"
+              width="100"
+              alt="..."
+            />
+            <h5 className="card-title text-center mt-2">Entertaiment</h5>
+            <div className="card-body">
+              <p className="card-text text-center">
+                Entertainment world to fill family time. Don't forget the best
+                show
+              </p>
+            </div>
+          </div>
+        </NavLink>
       </div>
+      {/* </div> */}
     </>
   );
-}
-
+};
 export default Home;

@@ -1,6 +1,5 @@
 import { BrowserRouter as R, Switch, Route } from "react-router-dom";
 
-import React from "react";
 import Home from "../views/Home";
 import Layout from "../component/Layout";
 import Business from "../views/Business";
@@ -9,15 +8,15 @@ import Sport from "../views/Sport";
 import Entertaiment from "../views/Entertaiment";
 import Science from "../views/Science";
 import Health from "../views/Health";
+import Technology from "../views/technology";
+import PageNotFound from "../views/404";
 
 const Router = () => {
   return (
     <R>
       <Switch>
         <Route exact path="/">
-          <Layout>
-            <Home />
-          </Layout>
+          <Home />
         </Route>
         <Route path="/business">
           <Layout>
@@ -49,6 +48,12 @@ const Router = () => {
             <Health />
           </Layout>
         </Route>
+        <Route path="/technology">
+          <Layout>
+            <Technology />
+          </Layout>
+        </Route>
+        <Route path="*" component={PageNotFound} />
       </Switch>
     </R>
   );
