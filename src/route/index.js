@@ -10,6 +10,7 @@ import Science from "../views/Science";
 import Health from "../views/Health";
 import Technology from "../views/technology";
 import PageNotFound from "../views/404";
+import Footer from "../component/Footer";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
       <Switch>
         <Route exact path="/">
           <Home />
+          <Footer />
         </Route>
         <Route path="/business">
           <Layout>

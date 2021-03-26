@@ -64,10 +64,10 @@ function General() {
                                 }
                               })()}
                             </p>
-                            <NavLink to="/" className="btn btn-danger btn-sm">
+                            <a href="/" className="btn btn-danger btn-sm">
                               {" "}
                               Back Home
-                            </NavLink>
+                            </a>
                           </div>
                         </div>
                       </>
@@ -94,7 +94,7 @@ function General() {
                     return (
                       <div className="row" key={i.toString()}>
                         <div className="col-md-5">
-                          <div className="card mx-2 shadow my-3 border-seondary">
+                          <div className="card  mx-2 shadow my-3 border-seondary">
                             <div className="bungkus">
                               <img
                                 src={article.urlToImage}

@@ -14,8 +14,25 @@
     <title>News Wegodev</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" class="start-fade"></div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="static/js/script.js" type="module"></script>
+    <script>
+      console.log(
+        "Dibuat untuk mobile tanpa tanpilan desktop web\nJadi saya buat min 550px untuk bisa melihat kontent\nSilahkan lihat di global css"
+      );
+      (function () {
+        setTimeout(() => {
+          document.getElementById("root").classList.remove("start-fade");
+          document.getElementById("root").classList.add("end-fade");
+
+          setTimeout(() => {
+            document.querySelectorAll(".card").forEach(a => {
+              a.classList.remove("start-fade");
+              a.classList.add("end-fade");
+            });
+          }, 1000);
+        }, 0);
+      })();
+    </script>
   </body>
 </html>

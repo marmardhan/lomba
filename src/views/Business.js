@@ -94,7 +94,7 @@ function Busines() {
                     return (
                       <div className="row" key={i.toString()}>
                         <div className="col-md-5">
-                          <div className="card mx-2 shadow my-3 border-seondary">
+                          <div className="card mx-2  shadow my-3 border-seondary">
                             <div className="bungkus">
                               <img
                                 src={article.urlToImage}
