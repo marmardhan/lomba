@@ -55,7 +55,8 @@ const Home = () => {
             <h5 className="card-title text-center mt-2">Business</h5>
             <div className="card-body">
               <p className="card-text text-center">
-                Business developments that are trending in the world
+                Business developments that are trending in the world. Find a
+                great business idea
               </p>
             </div>
           </div>
@@ -66,7 +67,8 @@ const Home = () => {
             <h5 className="card-title text-center mt-2">Science</h5>
             <div className="card-body">
               <p className="card-text text-center">
-                See the world of science and experiment in the world
+                See the world of science and experiment in the world. Amaze you
+                with science
               </p>
             </div>
           </div>
@@ -77,7 +79,8 @@ const Home = () => {
             <h5 className="card-title text-center mt-2">Health</h5>
             <div className="card-body">
               <p className="card-text text-center">
-                Health is very important especially during this pandemic
+                Health is very important especially during this pandemic. Stay
+                at Home, Stau Health
               </p>
             </div>
           </div>
